@@ -12,7 +12,6 @@ pipeline {
         PROD_PORT  = "3000"
         CONTAINER  = "aahaas-frontend"
     }
-
     stages {
 
         stage('Checkout Code') {
