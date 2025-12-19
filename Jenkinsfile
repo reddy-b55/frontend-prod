@@ -3,13 +3,14 @@ pipeline {
 
     environment {
         AWS_REGION = "us-east-1"
-        ACCOUNT_ID = "424858915041"                 // <-- change
+        ACCOUNT_ID = "424858915041"
         ECR_REPO   = "aahaas-frontend"
         IMAGE_TAG  = "frontend-prod"
 
         PROD_USER  = "ubuntu"
-        PROD_HOST  = "54.89.187.203"           // <-- change
+        PROD_HOST  = "54.89.187.203"
         PROD_PORT  = "3000"
+        CONTAINER  = "aahaas-frontend"
     }
 
     stages {
@@ -63,11 +64,13 @@ pipeline {
                       docker pull \
                       $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
 
-                      docker stop fresh-frontend || true
-                      docker rm fresh-frontend || true
+                      docker stop $CONTAINER || true
+                      docker rm $CONTAINER || true
+
+                      docker system prune -f
 
                       docker run -d \
-                        --name fresh-frontend \
+                        --name $CONTAINER \
                         -p $PROD_PORT:3000 \
                         --restart unless-stopped \
                         $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
@@ -80,11 +83,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ Deployment Successful"
+            echo "✅ Frontend Deployed Successfully"
         }
         failure {
-            echo "❌ Deployment Failed"
+            echo "❌ Frontend Deployment Failed"
         }
     }
 }
-
