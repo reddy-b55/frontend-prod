@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = "us-east-1"
         ACCOUNT_ID = "424858915041"
-        ECR_REPO   = "aahaas-frontend"
+        ECR_REPO = "aahaas-frontend-v2"
         IMAGE_TAG  = "frontend-prod"
 
         PROD_USER  = "ubuntu"
