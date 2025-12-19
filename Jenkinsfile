@@ -12,7 +12,7 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        git branch: 'main',
+        git branch:  'main',
             url: 'https://github.com/your-org/fresh-project.git'
       }
     }
