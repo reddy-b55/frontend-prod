@@ -1,0 +1,228 @@
+.recentSearchesModal :global(.modal-content) {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.modalHeader {
+  background: linear-gradient(135deg, #3b82f6  0%, #1d4ed8  100%);
+  color: white;
+  border-bottom: none;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.modalHeader :global(.btn-close) {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.headerIcon {
+  font-size: 20px !important;
+}
+
+.clearAllBtn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearAllBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.modalBody {
+  padding: 0;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #64748b;
+}
+
+.loadingSpinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f1f5f9;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #64748b;
+}
+
+.emptySessionTitle {
+  color: #475569;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.emptySessionText {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sessionList {
+  padding: 8px 0;
+}
+
+.sessionItem {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 12px;
+}
+
+.sessionItem:hover {
+  background-color: #abcaea;
+  /* transform: translateX(4px); */
+}
+
+.sessionItem:last-child {
+  border-bottom: none;
+}
+
+.sessionItemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.sessionItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.sessionSummary {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sessionTime {
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.sessionDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sessionDetailItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.detailIcon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.sessionDetailValue {
+  line-height: 1.4;
+}
+
+.deleteSessionButton {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.deleteSessionButton:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.modalFooter {
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 24px;
+  background: #f8fafc;
+}
+
+.closeButton {
+  background: #64748b;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #475569;
+}
+
+/* Scrollbar styling */
+.modalBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

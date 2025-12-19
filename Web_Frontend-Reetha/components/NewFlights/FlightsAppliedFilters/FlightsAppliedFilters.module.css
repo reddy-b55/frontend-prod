@@ -1,0 +1,160 @@
+/* AppliedFiltersPortal.module.css */
+.container {
+    background-color: #ffffff;
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.clearAllButton {
+    background: none;
+    border: none;
+    color: #ed4242;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.clearAllButton:hover {
+    background-color: #fef2f2;
+}
+
+.filtersGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.filterChip {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+.filterChip:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.chipIcon {
+    margin-right: 6px;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.chipText {
+    font-size: 13px;
+    color: #475569;
+    font-weight: 500;
+    margin-right: 6px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.closeIcon {
+    color: #94a3b8;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.closeIcon:hover {
+    color: #ef4444;
+}
+
+/* Animation for chips appearing/disappearing */
+.filterChip {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .header {
+        margin-bottom: 10px;
+    }
+    
+    .title {
+        font-size: 13px;
+    }
+    
+    .clearAllButton {
+        font-size: 13px;
+    }
+    
+    .filtersGrid {
+        gap: 6px;
+    }
+    
+    .filterChip {
+        padding: 5px 10px;
+    }
+    
+    .chipText {
+        font-size: 12px;
+    }
+    
+    .chipIcon,
+    .closeIcon {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .filtersGrid {
+        gap: 4px;
+    }
+    
+    .filterChip {
+        padding: 4px 8px;
+        border-radius: 16px;
+    }
+    
+    .chipText {
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,280 @@
+/* HotelConditions.module.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  color: #333333;
+  /* height: "300px", */
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+  overflow: hidden;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #2a2a2a;
+}
+
+.roomDetails {
+  padding: 20px;
+  background-color: #f9f9fb;
+}
+
+.roomName {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #1a1a1a;
+}
+
+.infoCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  padding: 14px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.infoIcon {
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.infoContent {
+  flex: 1;
+}
+
+.infoLabel {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.infoValue {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Accordion styles */
+.accordionContainer {
+  padding: 0;
+}
+
+.accordionSection {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.accordionSection:last-child {
+  border-bottom: none;
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accordionHeader:hover {
+  background-color: #f9f9fb;
+}
+
+.accordionTitle {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.accordionIcon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.accordionArrow {
+  font-size: 12px;
+  color: #888;
+}
+
+.accordionContent {
+  padding: 5px 20px 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Policy styles */
+.policyCard {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.policyCard2 {
+  background: #fdf6d0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.policyItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.policyDetail {
+  display: flex;
+  flex-direction: column;
+}
+
+.policyLabel {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.policyValue {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.policyCharge {
+  text-align: right;
+}
+
+.chargeValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e53935;
+}
+
+.chargeLabel {
+  font-size: 12px;
+  color: #666;
+  margin-left: 4px;
+}
+
+.policyDeadline {
+  display: flex;
+  flex-direction: column;
+}
+
+.deadlineLabel {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.deadlineValue {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Amenities styles */
+.amenitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.amenityTag {
+  display: flex;
+  align-items: center;
+  background-color: #f0f7ff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.amenityIcon {
+  margin-right: 8px;
+  color: #4caf50;
+}
+
+/* Rate Conditions styles */
+.rateConditionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.conditionItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.conditionBullet {
+  color: #4caf50;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.conditionText {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Footer styles */
+.footer {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+}
+
+.bookNowButton {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 2px 10px rgba(66, 133, 244, 0.3);
+}
+
+.bookNowButton:hover {
+  background-color: #3367d6;
+  transform: translateY(-1px);
+}
+
+.bookNowButton:active {
+  transform: translateY(1px);
+}

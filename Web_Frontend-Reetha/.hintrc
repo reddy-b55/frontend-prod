@@ -1,0 +1,15 @@
+{
+    "extends": ["web-recommended"],
+    "hints": {
+      "compat-api/html": "warning",
+      "compat-api/css": "warning",
+      "compat-api/javascript": "warning",
+      "disown-opener": "error",
+      "no-http-redirects": ["error", { "maxAge": 86400 }],
+      "no-vulnerable-javascript-libraries": "error",
+      "meta-viewport": "warning",
+      "strict-transport-security": ["error", { "min-age": 31536000 }],
+      "x-content-type-options": "error"
+    }
+  }
+  

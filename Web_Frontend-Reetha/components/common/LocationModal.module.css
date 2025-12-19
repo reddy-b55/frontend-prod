@@ -1,0 +1,197 @@
+/* LocationModal.module.css - Extracted modal styles */
+
+/* Modal */
+.modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  z-index: 3000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.modal.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.modalContent {
+  background: white !important;
+  border-radius: 16px !important;
+  width: 90% !important;
+  max-width: 500px !important;
+  max-height: 90vh !important;
+  overflow-y: hidden !important;
+  transform: scale(0.9) !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.511) !important;
+  /* Hide scrollbar (cross-browser) */
+  scrollbar-width: none !important;           /* Firefox */
+  -ms-overflow-style: none !important;        /* Internet Explorer & Edge */
+}
+
+.modalContent::-webkit-scrollbar {
+  display: none !important;
+}
+
+.modal.open .modalContent {
+  transform: scale(1) !important;
+}
+
+.modalHeader {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.5rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.modalTitle {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+  margin: 0 !important;
+}
+
+.closeButton {
+  padding: 0.5rem !important;
+  border: none !important;
+  background: none !important;
+  cursor: pointer !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.closeButton:hover {
+  background: #f7fafc !important;
+}
+
+.modalBody {
+  padding: 1.5rem !important;
+}
+
+.locationSection {
+  margin-bottom: 1.5rem !important;
+}
+
+.sectionTitle {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+  margin-bottom: 0.75rem !important;
+  margin-top: 0 !important;
+}
+
+.locationItem {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.875rem !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: #f8fafc !important;
+}
+
+.locationItem2 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.875rem !important;
+  /* border: 1px solid #e2e8f0; */
+  border-radius: 8px !important;
+  /* cursor: pointer; */
+  transition: all 0.2s ease !important;
+  /* background: #f8fafc; */
+}
+
+.locationItem:hover {
+  background: #e2e8f0 !important;
+  border-color: #cbd5e0 !important;
+}
+
+.locationText {
+  flex: 1 !important;
+  font-size: 0.875rem !important;
+  color: #4a5568 !important;
+  margin: 0 !important;
+}
+
+/* Search Input Styles for Google Places */
+.searchInput {
+  width: 100% !important;
+  padding: 0.75rem !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-size: 0.875rem !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.searchInput:focus {
+  border-color: #ed4242 !important;
+  box-shadow: 0 0 0 3px rgba(182, 182, 182, 0.1) !important;
+}
+
+/* Utility Classes */
+.ellipsis {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95% !important;
+    max-height: 95vh !important;
+    margin: 1rem !important;
+  }
+  
+  .modalHeader {
+    padding: 1rem !important;
+  }
+  
+  .modalBody {
+    padding: 1rem !important;
+  }
+  
+  .modalTitle {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .locationItem {
+    padding: 0.75rem !important;
+  }
+  
+  .sectionTitle {
+    font-size: 0.8125rem !important;
+  }
+  
+  .locationText {
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* .LocationModal_modalContent__x_OlJ */

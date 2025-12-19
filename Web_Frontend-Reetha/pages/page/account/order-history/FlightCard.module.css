@@ -1,0 +1,15 @@
+/* FlightCard.module.css */
+#flightCard {
+    width: 100%; /* fallback for browsers that don't support -webkit-fill-available */
+  }
+  .card {
+    width: 80%;
+  }
+ .detailBtn{
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: #000000;
+    color: white;
+    font-size: 12px;
+
+ }

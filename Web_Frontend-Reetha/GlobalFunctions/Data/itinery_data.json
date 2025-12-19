@@ -1,0 +1,182 @@
+{
+    "itinerary_title": "Your Guide to an Unforgettable Trip",
+    "itinerary_description": "Embark on a journey filled with cultural discoveries and breathtaking adventures in one of the most stunning destinations. Immerse yourself in the vibrant colors and flavors of a place where every day brings new surprises. From exploring ancient ruins to indulging in delicious local cuisine, this trip promises to be a perfect blend of excitement and relaxation. With a perfect balance of activities and downtime, you'll feel rejuvenated and inspired every step of the way. Let the beauty of this exotic paradise sweep you off your feet and create memories that will last a lifetime. Get ready for an epic adventure that will leave you wanting more!",
+    "itinerary": [
+      {
+        "itinerary_date": "2025-03-04",
+        "data": [
+          {
+            "cart_booking_id": 7582,
+            "activity_description": "Explore the vibrant city of Colombo with a stay at the luxurious Pearl Grand By Rathna. This hotel offers a perfect blend of comfort and style with modern amenities like an outdoor pool, fitness centre, and a restaurant serving delicious American cuisine. Enjoy a relaxing stay in your room with city views, flat-screen TV, and free WiFi. Wake up to a delicious breakfast before heading out to explore nearby beaches and attractions. Don't miss the chance to indulge in a relaxing stay at this exquisite hotel.",
+            "service_data": {
+              "service_name": "Pearl Grand",
+              "service_image": "https://aahaas-prod-assets.s3.ap-southeast-1.amazonaws.com/productImages/hotels/P9txd5hjNfBYaWyNnWhh7tf4KhB56NLJGdGnj9j9.jpg",
+              "service_description": "<p>Located in Colombo, 400 metres from Bambalapitiya Beach, Pearl Grand By Rathna provides accommodation with an outdoor swimming pool, free private parking, a fitness centre, and a terrace. The property features a bar and a restaurant serving American cuisine. The accommodation offers a 24-hour front desk, airport transfers, room service, and free WiFi. Each room is equipped with air conditioning, a desk, a balcony with a city view, a private bathroom, a flat-screen TV, bed linen, and towels. Guest rooms also include a safety deposit box, and some offer sea views. A buffet, continental, or Full English/Irish breakfast is available daily. Popular points of interest nearby include Milagiriya Beach, Kollupitiya Beach, and Bambalapitiya Railway Station. The nearest airport is Diyawanna Oya Seaplane Base Airport, 8 km from the accommodation.</p>",
+              "service_time": "Standard hotel check-in time is usually around 2:00 PM to 3:00 PM",
+              "service_location": "No. 09, Edward Lane, Colombo 03, Colombo, Sri Lanka",
+              "service_date": "2025-03-04",
+              "product_id": 30,
+              "inventory_id": "",
+              "rate_id": "",
+              "booking_id": "",
+              "category": 4,
+              "cart_booking_id": 7582,
+              "remarks": "No Of nights count is 1. Add some attractive description for the no of nights Meal plan and others ",
+              "paxDataCount": 1,
+              "travel_buddy_adult_id": "1588",
+              "travel_buddy_child_id": "",
+              "meal_plan": "BB",
+              "travelBuddyCombination": [
+                "1588"
+              ],
+              "orderID": 2264
+            }
+          }
+        ]
+      },
+      {
+        "itinerary_date": "2025-03-13",
+        "data": [
+          {
+            "cart_booking_id": 7148,
+            "activity_description": "Indulge in the laid-back sophistication of the Printed Cuban Collar Short Sleeve Shirt by Dilly & Carlo. This stylish shirt combines classic Cuban collar design with modern prints, perfect for a chic and relaxed look. Crafted from lightweight fabric, it offers comfort and breathability, making it ideal for summer outings or casual gatherings. With delivery available within the day, you can enjoy this fashionable piece at WRHV+5X8, Colombo, Sri Lanka. Don't miss out on this versatile wardrobe essential for a trendy and effortless style statement.",
+            "service_data": {
+              "service_name": "Printed Cuban Collar Short Sleeve Shirt by Dilly & Carlo",
+              "service_image": "https://aahaas-prod-assets.s3.ap-southeast-1.amazonaws.com/productImages/essentials/GD5dnjeNAGiUO14f69wOBRT06iZ5x9QgBDfhCHIq.jpg",
+              "service_description": "<p>The Printed Cuban Collar Short Sleeve Shirt by Dilly and Carlo combines classic Cuban collar styling with modern prints for a stylish, relaxed look. Crafted from lightweight, breathable fabric, it offers both comfort and a chic, casual flair, perfect for summer outings or laid-back gatherings.</p>",
+              "service_location": "WRHV+5X8, Colombo, Sri Lanka",
+              "service_date": "2025-03-13",
+              "product_id": 231,
+              "inventory_id": 1247,
+              "rate_id": 1247,
+              "booking_id": 1104,
+              "quantity": 1,
+              "category": 1,
+              "cart_booking_id": 7148,
+              "service_time": "Within The Day",
+              "remarks": "This product can be delivered within the day to the relevant address.",
+              "paxDataCount": 1,
+              "orderID": 2137
+            }
+          }
+        ]
+      },
+      {
+        "itinerary_date": "2025-03-19",
+        "data": [
+          {
+            "cart_booking_id": 7583,
+            "activity_description": "Enjoy a thrilling read with \"Alex Rider – Snakehead\" by I Books in Colombo, Sri Lanka. Immerse yourself in the exciting world of espionage and adventure as you follow the protagonist, Alex Rider, on another dangerous mission. This product can be delivered within the day to your address, making it convenient for you to start reading right away. Don't miss out on this captivating novel that will keep you on the edge of your seat. Get ready for an unforgettable literary experience!",
+            "service_data": {
+              "service_name": "Alex Rider – Snakehead by I Books",
+              "service_image": "https://supplier.aahaas.com/image/essentials-nonEssentials/EN_688_0_1721280056.jpg",
+              "service_description": "\"Alex Rider Snakehead\" is a novel in the popular Alex Rider series by Anthony Horowitz, known for its thrilling adventures and espionage themes.",
+              "service_location": "WRHV+5X8, Colombo, Sri Lanka",
+              "service_date": "2025-03-19",
+              "product_id": 1079,
+              "inventory_id": 3297,
+              "rate_id": 3297,
+              "booking_id": 1207,
+              "quantity": 1,
+              "category": 2,
+              "cart_booking_id": 7583,
+              "service_time": "Within The Day",
+              "remarks": "This product can be delivered within the day to the relevant address.",
+              "paxDataCount": 1,
+              "orderID": 2264
+            }
+          }
+        ]
+      },
+      {
+        "itinerary_date": "2025-03-20",
+        "data": [
+          {
+            "cart_booking_id": 7579,
+            "activity_description": "Experience the timeless elegance of the Classic Linen Long Sleeve Shirt by Dilly & Carlo during your stay in Colombo, Sri Lanka. This versatile shirt offers a relaxed fit and breathable comfort, making it suitable for any occasion, whether casual or semi-formal. With a delivery option within the day, you can effortlessly add this sophisticated piece to your wardrobe for a stylish touch to your ensemble. Embrace the classic charm of linen with this must-have staple.",
+            "service_data": {
+              "service_name": "Classic Linen Long Sleeve Shirt by Dilly & Carlo",
+              "service_image": "https://aahaas-prod-assets.s3.ap-southeast-1.amazonaws.com/productImages/essentials/1QorB67oTUW1yAJQENIdYgkRLwYHJRggNgH6DnWS.jpg",
+              "service_description": "<p>The Classic Linen Long Sleeve Shirt by Dilly and Carlo combines traditional linen fabric with a timeless design. Offering a relaxed fit and breathable comfort, it’s perfect for both casual and semi-formal occasions, ensuring a sophisticated look and feel.</p>",
+              "service_location": "WRHV+5X8, Colombo, Sri Lanka",
+              "service_date": "2025-03-20",
+              "product_id": 293,
+              "inventory_id": 1494,
+              "rate_id": 1494,
+              "booking_id": 1206,
+              "quantity": 1,
+              "category": 1,
+              "cart_booking_id": 7579,
+              "service_time": "Within The Day",
+              "remarks": "This product can be delivered within the day to the relevant address.",
+              "paxDataCount": 1,
+              "orderID": 2264
+            }
+          },
+          {
+            "cart_booking_id": 7580,
+            "activity_description": "Embark on an epic 7-night journey across Sri Lanka with our \"Epic Sri Lanka Journey\" package. Your adventure begins in Kandy, where you'll spend 2 nights exploring the city's rich heritage. Next, head to Nuwara Eliya for 2 nights amidst stunning landscapes. Discover the vibrant culture of Galle during your 2-night stay, then conclude your trip with 1 night in Colombo. With a private vehicle and experienced driver at your service, enjoy seamless transfers and personalized sightseeing. This package is perfect for travelers seeking a hassle-free and unforgettable Sri Lankan experience.",
+            "service_data": {
+              "service_name": "Epic Sri Lanka Journey  (7N/8D)",
+              "service_image": "https://aahaas-prod-assets.s3.ap-southeast-1.amazonaws.com/productImages/lifestyles/ZUmk4flGEe4EZCLxb8503FHmaA0lkWAjVIz8FIXu.jpg",
+              "service_description": "<p>2N Kandy - 2N Nuwara Eliya - 2N Galle - 1N Colombo<br>\n<br>\n<br>\nEnjoy the convenience of a private vehicle with an experienced driver for your 7-night journey across Sri Lanka. Covering 2 nights in Kandy, 2 nights in Nuwara Eliya, 2 nights in Galle, and 1 night in Colombo, the vehicle will be at your disposal for transfers, sightseeing, and any detours you wish to make. The service includes fuel, tolls, parking, and ensuring a smooth and comfortable trip.</p>\n\n<p><strong>Tentative Itinerary:</strong><br>\nDay 1: Arrival in Kandy</p>\n\n<p>Day 2: Kandy City Tour</p>\n\n<p>Day 3: Kandy to Nuwara Eliya</p>\n\n<p>Day 4: Nuwara Eliya City Tour</p>\n\n<p>Day 5: Nuwara Eliya to Galle (Hikkaduwa)</p>\n\n<p>Day 6: Galle (Hikkaduwa)</p>\n\n<p>Day 7: Galle (Hikkaduwa) to Colombo</p>",
+              "service_location": "Galle, Sri Lanka",
+              "service_date": "2025-03-20",
+              "service_time": "09:00-17:00",
+              "product_id": 4288,
+              "inventory_id": 3088622,
+              "rate_id": 4517,
+              "booking_id": 11715,
+              "lifestyle_children_count": 0,
+              "lifestyle_adult_count": 1,
+              "travel_buddy_adult_id": "1588",
+              "travel_buddy_child_id": null,
+              "bridgify_cart_data": null,
+              "discount_data": null,
+              "category": 3,
+              "cart_booking_id": 7580,
+              "remarks": "This is like a service customers are going visiting to.",
+              "paxDataCount": 1,
+              "travelBuddyCombination": [
+                "1588"
+              ],
+              "orderID": 2264
+            }
+          },
+          {
+            "cart_booking_id": 7581,
+            "activity_description": "Embark on a 5-night, 6-day cultural discovery journey in Sri Lanka, starting in Negombo and ending in Colombo. Explore the tranquil beaches, ancient ruins, lush tea landscapes, and vibrant city life of this captivating country. Stay in 3 to 5-star accommodations, visit iconic sites like Sigiriya Rock Fortress and Temple of the Sacred Tooth Relic in Kandy, and experience local culture and traditions. This tour offers the perfect blend of relaxation, adventure, and rich heritage, creating cherished memories before your departure.",
+            "service_data": {
+              "service_name": "Sri Lanka Cultural Discovery - 5 Nights / 6 Days",
+              "service_image": "https://aahaas-prod-assets.s3.ap-southeast-1.amazonaws.com/productImages/lifestyles/sL5zM4vho0Hy53l2LA32F7aY669SVLxdWA0NNioF.png",
+              "service_description": "<p><strong>Discover the captivating beauty of Sri Lanka on this unforgettable journey. From the tranquil beaches of Negombo to the ancient ruins of Anuradhapura, explore cultural treasures in Sigiriya &amp; Kandy, the lush tea landscapes of Nuwara Eliya, and Colombo's vibrant city life. Enjoy a perfect blend of relaxation, adventure, and rich heritage, creating cherished memories before your departure.</strong></p>\n\n<h3><strong>Itinerary</strong></h3>\n\n<p><strong>Day 1: Arrival in Negombo</strong></p>\n\n<p><strong>Airport – Negombo Arrival &amp; Negombo Exploration</strong></p>\n\n<ul>\n\t<li>Arrival at Bandaranaike International Airport (Colombo).</li>\n\t<li>Meet your guide and transfer to Negombo.</li>\n\t<li><strong>Morning</strong>: Relax on the beach or visit Negombo’s fishing village to discover the local culture.</li>\n\t<li><strong>Evening</strong>: Enjoy a peaceful evening by the beach.</li>\n\t<li><strong>Hotel options based on packages</strong>:\n\t<ul>\n\t\t<li>3-Star Package: <em>Rani Beach</em></li>\n\t\t<li>4-Star Package: <em>Rigenta Arie Lagoon</em></li>\n\t\t<li>5-Star Package: <em>Wattura Resort</em></li>\n\t</ul>\n\t</li>\n</ul>\n\n<p><strong>Day 2: Dambulla &amp; Sigiriya</strong></p>\n\n<p><strong>Negombo to Dambulla</strong></p>\n\n<ul>\n\t<li><strong>Morning</strong>: Depart for Dambulla (1.5 hours).</li>\n\t<li><strong>Afternoon</strong>: Visit the magnificent Sigiriya Rock Fortress or experience the charm of a traditional Sri Lankan village tour.</li>\n\t<li><strong>Evening</strong>: Overnight stay in Dambulla.</li>\n\t<li><strong>Hotel options based on packages</strong>:\n\t<ul>\n\t\t<li>3-Star Package: <em>Elephant Lake</em></li>\n\t\t<li>4-Star Package: <em>Habarana Village</em></li>\n\t\t<li>5-Star Package: <em>Cinnamon Lodge</em></li>\n\t</ul>\n\t</li>\n</ul>\n\n<p><strong>Day 3: Kandy</strong></p>\n\n<p><strong>Dambulla to Kandy</strong></p>\n\n<ul>\n\t<li><strong>Morning</strong>: Explore the Dambulla Cave Temple, a UNESCO World Heritage site.</li>\n\t<li><strong>Afternoon</strong>: Head to Kandy (2-3 hours). Visit the Temple of the Sacred Tooth Relic, a revered Buddhist site.</li>\n\t<li><strong>Evening</strong>: Witness a traditional Kandyan cultural dance performance before settling in for the night.</li>\n\t<li><strong>Hotel options based on packages</strong>:\n\t<ul>\n\t\t<li>3-Star Package: <em>Senani Hotel</em></li>\n\t\t<li>4-Star Package: <em>Earls Regent</em></li>\n\t\t<li>5-Star Package: <em>Mahaweli Reach</em></li>\n\t</ul>\n\t</li>\n</ul>\n\n<p><strong>Day 4: Nuwara Eliya</strong></p>\n\n<p><strong>Kandy to Nuwara Eliya</strong></p>\n\n<ul>\n\t<li><strong>Morning</strong>: Journey to Nuwara Eliya, with a stop at a tea plantation (2.5 hours).</li>\n\t<li><strong>Afternoon</strong>: Explore Nuwara Eliya town and enjoy the serene beauty of Gregory Lake.</li>\n\t<li><strong>Evening</strong>: Relax and unwind with an overnight stay in the cool climate of Nuwara Eliya.</li>\n\t<li><strong>Hotel options based on packages</strong>:\n\t<ul>\n\t\t<li>3-Star Package: <em>Summer Hill Breeze</em></li>\n\t\t<li>4-Star Package: <em>Araliya Red</em></li>\n\t\t<li>5-Star Package: <em>Araliya Green City</em></li>\n\t</ul>\n\t</li>\n</ul>\n\n<p><strong>Day 5: Colombo</strong></p>\n\n<p><strong>Nuwara Eliya to Colombo</strong></p>\n\n<ul>\n\t<li><strong>Morning</strong>: Depart for Colombo (5-6 hours).</li>\n\t<li><strong>Afternoon</strong>: Explore the vibrant capital city of Colombo. Visit famous sites like Galle Face Green, Gangaramaya Temple, and Independence Square.</li>\n\t<li><strong>Evening</strong>: Enjoy the bustling nightlife of Colombo or relax at your hotel.</li>\n\t<li><strong>Hotel options based on packages</strong>:\n\t<ul>\n\t\t<li>3-Star Package: <em>Best Western</em></li>\n\t\t<li>4-Star Package: <em>Radisson Colombo</em></li>\n\t\t<li>5-Star Package: <em>Cinnamon Lakeside</em></li>\n\t</ul>\n\t</li>\n</ul>\n\n<p><strong>Day 6: Departure</strong></p>\n\n<p><strong>Colombo – Departure</strong></p>\n\n<ul>\n\t<li><strong>Morning</strong>: Last-minute shopping or relax before your departure.</li>\n\t<li><strong>Afternoon</strong>: Transfer to Bandaranaike International Airport for your flight back home.</li>\n\t<li><strong>End of Tour</strong></li>\n</ul>",
+              "service_location": "Negombo, Sri Lanka",
+              "service_date": "2025-03-20",
+              "service_time": "09:00-19:00",
+              "product_id": 6600,
+              "inventory_id": 6458470,
+              "rate_id": 6657,
+              "booking_id": 11714,
+              "lifestyle_children_count": 0,
+              "lifestyle_adult_count": 1,
+              "travel_buddy_adult_id": "1588",
+              "travel_buddy_child_id": null,
+              "bridgify_cart_data": null,
+              "discount_data": null,
+              "category": 3,
+              "cart_booking_id": 7581,
+              "remarks": "This is like a service customers are going visiting to.",
+              "paxDataCount": 1,
+              "travelBuddyCombination": [
+                "1588"
+              ],
+              "orderID": 2264
+            }
+          }
+        ]
+      }
+    ],
+    "coverImagePath": "",
+    "itineraryType": "long",
+    "logo": ""
+  }

@@ -1,0 +1,44 @@
+/* --OrderHistory.module.css-- */
+.tabButton {
+  display: inline-block;
+  padding: 0.15rem 1rem;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tabButton:hover {
+  background-color: #e9ecef;
+  border-color: #ccc;
+}
+
+.activeTab {
+  background-color: #ed4242;
+  color: white;
+  border-color: #ed4242;
+}
+.activeTab:hover {
+  background-color: #dc3545;
+}
+/* Optional: Remove default tab styling */
+.nav.nav-pills {
+  gap: 0.5rem;
+  border: none;
+  background-color: #f8f9fa00;
+}
+
+.nav-link {
+  padding: 0 !important;
+  border: none !important;
+}
+
+.nav-link.active {
+  background: none !important;
+}
+.nav-pills .nav-link {
+    background: none !important;
+  }

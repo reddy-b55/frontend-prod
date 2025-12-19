@@ -1,0 +1,99 @@
+/* PendingOrders.module.css */
+.PO_container {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .PO_buttonContainer {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Hide scrollbar for the button container */
+  .PO_buttonContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .PO_buttonContainer {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Styles for the category buttons */
+  .PO_categoryButton {
+    display: flex !important;  /* Override Bootstrap */
+    align-items: center !important;  /* Override Bootstrap */
+    gap: 5px !important;  /* Override Bootstrap */
+    color: #8f8e8d !important;  /* Override Bootstrap */
+    text-transform: none !important;  /* Override Bootstrap */
+    border-radius: 8px !important;  /* Override Bootstrap */
+    border: 1px solid #e0e0e0 !important;  /* Override Bootstrap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;  /* Override Bootstrap */
+    padding: 5px 10px !important;  /* Override Bootstrap */
+    cursor: pointer !important;  /* Override Bootstrap */
+    background-color: white;  /* Override Bootstrap */
+    min-width: fit-content !important;  /* Override Bootstrap */
+  }
+  .PO_categoryButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+    color: #333;
+  }
+  
+  .PO_categoryButton:hover {
+    background-color: #e9ecef;
+  }
+  
+  .PO_categoryButton_selected {
+    background-color: #ed4242 !important;
+    border-color: #ed4242 !important;
+    color: white !important;
+  }
+
+  .PO_loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5rem;
+  }
+  
+  .PO_categoryButton_selected:hover {
+    background-color: #dc3545 !important;
+  }
+  
+  /* Hover effect for category buttons */
+  .PO_categoryButton:hover {
+    background-color: rgb(199, 199, 199) !important;  /* Override Bootstrap */
+    color: white !important;  /* Override Bootstrap */
+  }
+  
+  /* Container for the cards */
+  .PO_cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    
+  }
+  
+  /* Responsive styles for larger screens */
+  @media (min-width: 768px) {
+    .PO_cardContainer {
+      /* flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 20px; */
+    }
+  }

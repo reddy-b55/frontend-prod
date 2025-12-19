@@ -1,0 +1,268 @@
+Define CSS custom properties for colors
+.root {
+  --primary4: #3498db;
+  --primary5: #2980b9;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --background-light: #f5f8ff;
+  --background-white: #ffffff;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --disabled-color: #bdc3c7;
+  --badge-background: #e3f2fd;
+}
+
+.container {
+  height: 100vh;
+  /* background-color: var(--background-light); */
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.backButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: var(--background-white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 3px var(--shadow-medium);
+  transition: all 0.2s ease;
+  color: var(--text-dark);
+}
+
+.backButton:hover {
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transform: translateY(-1px);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-dark);
+  text-align: center;
+  margin: 0;
+}
+
+.placeholderView {
+  width: 40px;
+}
+
+.packagesContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.packageItem {
+  display: flex;
+  align-items: flex-start;
+  background-color: var(--background-white);
+  border-radius: 25px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.packageItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--shadow-light);
+}
+
+.selectedPackageItem {
+  border-color: var(--primary4);
+}
+
+.checkboxContainer {
+  margin-right: 12px;
+  padding-top: 2px;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 2px solid var(--primary4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.checkboxChecked {
+  background-color: var(--primary4);
+}
+
+.packageInfo {
+  flex: 1;
+}
+
+.networkRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.networkIcon {
+  color: var(--primary4);
+}
+
+.networkText {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-left: 6px;
+}
+
+.statusBadge {
+  background-color: var(--badge-background);
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: auto;
+}
+
+.statusText {
+  color: var(--primary4);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.packageName {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+}
+
+.featureContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 8px;
+  margin-bottom: 8px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-light);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.featureIcon {
+  color: var(--primary5);
+}
+
+.featureText {
+  font-size: 12px;
+  color: var(--text-dark);
+  margin-left: 4px;
+}
+
+.packagePrice {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary5);
+  margin-top: 4px;
+}
+
+.summaryContainer {
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.checkoutButton {
+  background-color: var(--primary5);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.checkoutButton:hover:not(:disabled) {
+  background-color: var(--primary4);
+  transform: translateY(-1px);
+}
+
+.disabledCheckoutButton {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+}
+
+.checkoutButtonText {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.checkoutIcon {
+  color: #fff;
+  margin-left: 5px;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 18px;
+  }
+  
+  .packageItem {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  
+  .packageName {
+    font-size: 16px;
+  }
+  
+  .featureText {
+    font-size: 11px;
+  }
+  
+  .packagePrice {
+    font-size: 14px;
+  }
+}
+
+/* Scrollbar styling */
+.packagesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.packagesContainer::-webkit-scrollbar-track {
+  background: var(--background-light);
+  border-radius: 3px;
+}
+
+.packagesContainer::-webkit-scrollbar-thumb {
+  background: var(--primary4);
+  border-radius: 3px;
+}
+
+.packagesContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--primary5);
+}

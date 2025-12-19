@@ -1,0 +1,245 @@
+/* Banner.module.css */
+
+.bannerContainer {
+  position: relative;
+  overflow: hidden;
+  /* border-radius: 0 0 24px 24px; */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  height: 600px;
+  z-index: 1; 
+}
+
+.loaderWrapper {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.slideContainer {
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+}
+
+.responsiveImage {
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: 600px;
+  object-fit: center;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  pointer-events: none;
+}
+
+.bookNowBtn {
+  position: relative;
+  overflow: hidden;
+}
+
+.bookNowBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.bookNowBtn:hover::before {
+  left: 100%;
+}
+
+.bookNowBtn:hover {
+  transform: translateX(-50%) scale(1.05) translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Custom Arrow Styles */
+.customArrow {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  z-index: 2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #333;
+}
+
+.customArrow:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  /* transform: scale(1.0); */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color: #667eea;
+}
+
+.customArrow:before {
+  display: none;
+}
+
+.prevArrow {
+  left: 20px !important;
+}
+
+.nextArrow {
+  right: 20px !important;
+}
+
+/* Custom Dots Styles */
+.customDots {
+  bottom: 60px !important;
+  z-index: 3;
+}
+
+.customDots li {
+  margin: 0 8px;
+}
+
+.customDots li button {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 50% !important;
+  width: 12px !important;
+  height: 12px !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+  font-size: 0;
+}
+
+.customDots li button:before {
+  display: none;
+}
+
+.customDots li.slick-active button {
+  background: white !important;
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .bannerContainer {
+    border-radius: 0 0 16px 16px;
+    height: 350px;
+  }
+  
+  .slideContainer {
+    height: 350px;
+  }
+  
+  .responsiveImage {
+    height: 350px;
+  }
+  
+  .loaderWrapper {
+    height: 350px;
+  }
+  
+  .customDots {
+    bottom: 80px !important;
+  }
+  
+  .customArrow {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .prevArrow {
+    left: 15px !important;
+  }
+  
+  .nextArrow {
+    right: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerContainer {
+    height: 280px;
+  }
+  
+  .slideContainer {
+    height: 280px;
+  }
+  
+  .responsiveImage {
+    height: 280px;
+  }
+  
+  .loaderWrapper {
+    height: 280px;
+  }
+  
+  .customDots {
+    bottom: 70px !important;
+  }
+  
+  .customArrow {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  .prevArrow {
+    left: 10px !important;
+  }
+  
+  .nextArrow {
+    right: 10px !important;
+  }
+}
+
+/* Slider container styles */
+.sliderWrapper {
+  height: 600px;
+}
+
+.sliderWrapper :global(.slick-slider),
+.sliderWrapper :global(.slick-list),
+.sliderWrapper :global(.slick-track) {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .sliderWrapper {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sliderWrapper {
+    height: 280px;
+  }
+}

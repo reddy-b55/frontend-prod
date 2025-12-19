@@ -1,0 +1,65 @@
+[
+    {
+        "KualaLumpur": {
+            "province": "Federal Territory",
+            "coordinates": {
+                "lat": 3.139,
+                "lng": 101.6869
+            }
+        }
+    },
+    {
+        "GeorgeTown": {
+            "province": "Penang",
+            "coordinates": {
+                "lat": 5.4141,
+                "lng": 100.3288
+            }
+        }
+    },
+    {
+        "JohorBahru": {
+            "province": "Johor",
+            "coordinates": {
+                "lat": 1.4927,
+                "lng": 103.7414
+            }
+        }
+    },
+    {
+        "Ipoh": {
+            "province": "Perak",
+            "coordinates": {
+                "lat": 4.5975,
+                "lng": 101.0901
+            }
+        }
+    },
+    {
+        "KotaKinabalu": {
+            "province": "Sabah",
+            "coordinates": {
+                "lat": 5.9804,
+                "lng": 116.0735
+            }
+        }
+    },
+    {
+        "MalaccaCity": {
+            "province": "Malacca",
+            "coordinates": {
+                "lat": 2.1896,
+                "lng": 102.2501
+            }
+        }
+    },
+    {
+        "Kuching": {
+            "province": "Sarawak",
+            "coordinates": {
+                "lat": 1.5535,
+                "lng": 110.3593
+            }
+        }
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "Colombo": {
+            "province": "Western",
+            "coordinates": {
+                "lat": 6.9271,
+                "lng": 79.8612
+            }
+        }
+    },
+    {
+        "Kandy": {
+            "province": "Central",
+            "coordinates": {
+                "lat": 7.2906,
+                "lng": 80.6337
+            }
+        }
+    },
+    {
+        "Galle": {
+            "province": "Southern",
+            "coordinates": {
+                "lat": 6.0328,
+                "lng": 80.217
+            }
+        }
+    },
+    {
+        "Jaffna": {
+            "province": "Northern",
+            "coordinates": {
+                "lat": 9.6615,
+                "lng": 80.0255
+            }
+        }
+    },
+    {
+        "Trincomalee": {
+            "province": "Eastern",
+            "coordinates": {
+                "lat": 8.5874,
+                "lng": 81.2152
+            }
+        }
+    },
+    {
+        "Anuradhapura": {
+            "province": "North Central",
+            "coordinates": {
+                "lat": 8.3114,
+                "lng": 80.4037
+            }
+        }
+    },
+    {
+        "Batticaloa": {
+            "province": "Eastern",
+            "coordinates": {
+                "lat": 7.7102,
+                "lng": 81.6921
+            }
+        }
+    },
+    {
+        "NuwaraEliya": {
+            "province": "Central",
+            "coordinates": {
+                "lat": 6.9497,
+                "lng": 80.7891
+            }
+        }
+    },
+    {
+        "Ratnapura": {
+            "province": "Sabaragamuwa",
+            "coordinates": {
+                "lat": 6.6828,
+                "lng": 80.3992
+            }
+        }
+    },
+    {
+        "Matara": {
+            "province": "Southern",
+            "coordinates": {
+                "lat": 5.9485,
+                "lng": 80.5353
+            }
+        }
+    }
+]
