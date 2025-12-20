@@ -57,7 +57,7 @@ pipeline {
             }
         }
 
-       
+    }   // ✅ THIS WAS MISSING (end of stages)
 
     post {
         success {
