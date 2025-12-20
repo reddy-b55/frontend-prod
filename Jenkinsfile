@@ -4,13 +4,13 @@ pipeline {
     environment {
         AWS_REGION = "us-east-1"
         ACCOUNT_ID = "424858915041"
-        ECR_REPO   = "aahaas-frontend-v2"
-        IMAGE_TAG  = "frontend-prod"
+        ECR_REPO  = "aahaas-frontend-v2"
+        IMAGE_TAG = "frontend-prod"
 
-        PROD_USER  = "ubuntu"
-        PROD_HOST  = "172.31.28.146"
-        PROD_PORT  = "3000"
-        CONTAINER  = "aahaas-frontend"
+        PROD_USER = "ubuntu"
+        PROD_HOST = "54.89.187.203"
+        APP_PORT  = "3000"
+        CONTAINER = "aahaas-frontend"
     }
 
     stages {
@@ -24,29 +24,36 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${ECR_REPO}:${IMAGE_TAG} ."
+                sh '''
+                  docker build -t ${ECR_REPO}:${IMAGE_TAG} .
+                '''
             }
         }
 
         stage('Login to Amazon ECR') {
             steps {
-                sh """
-                aws ecr get-login-password --region ${AWS_REGION} \
-                | docker login --username AWS --password-stdin \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-                """
+                withCredentials([
+                    [$class: 'AmazonWebServicesCredentialsBinding',
+                     credentialsId: 'aws-ecr-creds']
+                ]) {
+                    sh '''
+                      aws ecr get-login-password --region ${AWS_REGION} |
+                      docker login --username AWS --password-stdin \
+                      ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                    '''
+                }
             }
         }
 
         stage('Tag & Push Image to ECR') {
             steps {
-                sh """
-                docker tag ${ECR_REPO}:${IMAGE_TAG} \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
+                sh '''
+                  docker tag ${ECR_REPO}:${IMAGE_TAG} \
+                  ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
 
-                docker push \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                """
+                  docker push \
+                  ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
+                '''
             }
         }
 
@@ -55,8 +62,8 @@ pipeline {
                 sshagent(['ec2-prod-key']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ${PROD_USER}@${PROD_HOST} << 'EOF'
-                      aws ecr get-login-password --region ${AWS_REGION} \
-                      | docker login --username AWS --password-stdin \
+                      aws ecr get-login-password --region ${AWS_REGION} |
+                      docker login --username AWS --password-stdin \
                       ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
 
                       docker pull \
@@ -67,7 +74,7 @@ pipeline {
 
                       docker run -d \
                         --name ${CONTAINER} \
-                        -p ${PROD_PORT}:3000 \
+                        -p ${APP_PORT}:3000 \
                         --restart unless-stopped \
                         ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
                     EOF
@@ -82,7 +89,7 @@ pipeline {
             echo "✅ Frontend deployed successfully"
         }
         failure {
-            echo "❌ Deployment failed"
+            echo "❌ Frontend deployment failed"
         }
     }
 }
