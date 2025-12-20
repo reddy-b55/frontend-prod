@@ -57,32 +57,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production EC2') {
-            steps {
-                sshagent(['ec2-prod-key']) {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no ${PROD_USER}@${PROD_HOST} << 'EOF'
-                      aws ecr get-login-password --region ${AWS_REGION} |
-                      docker login --username AWS --password-stdin \
-                      ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-
-                      docker pull \
-                      ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-
-                      docker stop ${CONTAINER} || true
-                      docker rm ${CONTAINER} || true
-
-                      docker run -d \
-                        --name ${CONTAINER} \
-                        -p ${APP_PORT}:3000 \
-                        --restart unless-stopped \
-                        ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                    EOF
-                    """
-                }
-            }
-        }
-    }
+       
 
     post {
         success {
