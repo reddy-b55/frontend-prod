@@ -63,7 +63,7 @@ pipeline {
 
         stage('Deploy to Production EC2') {
             steps {
-                sshagent(['prod-ec2-key']) {
+                sshagent(['ec2-prod-key']) {
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
                         credentialsId: 'aws-ecr-creds'
