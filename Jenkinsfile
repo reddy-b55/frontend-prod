@@ -18,23 +18,28 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh '''
-                    export PATH=/usr/bin:$PATH
-                    node -v || true
-
-                    sonar-scanner \
-                      -Dsonar.projectKey=aahaas-frontend \
-                      -Dsonar.projectName=aahaas-frontend \
-                      -Dsonar.sources=. \
-                      -Dsonar.language=js \
-                      -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/dist/**,**/build/**
-                    '''
-                }
+       stage('SonarQube Analysis') {
+    tools {
+        nodejs 'node18'
+    }
+    steps {
+        withSonarQubeEnv('SonarQube') {
+            script {
+                def scannerHome = tool 'SonarScanner'
+                sh """
+                node -v
+                ${scannerHome}/bin/sonar-scanner \
+                  -Dsonar.projectKey=aahaas-frontend \
+                  -Dsonar.projectName=aahaas-frontend \
+                  -Dsonar.sources=. \
+                  -Dsonar.language=js \
+                  -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/dist/**,**/build/**
+                """
             }
         }
+    }
+}
+
 
         stage('Quality Gate') {
             steps {
