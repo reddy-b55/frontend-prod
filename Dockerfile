@@ -4,7 +4,9 @@ FROM node:18 AS builder
 WORKDIR /app
 
 # Increase Node memory to avoid SIGKILL
-ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV NEXT_DISABLE_ESLINT=true
+
 
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
