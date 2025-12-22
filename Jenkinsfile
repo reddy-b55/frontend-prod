@@ -6,9 +6,9 @@ pipeline {
         ACCOUNT_ID = "424858915041"
 
         // Change only these for new projects
-        ECR_REPO  = "aahaas-frontend-v2"
+        ECR_REPO  = "aahaas-frontend"
         IMAGE_TAG = "${BUILD_NUMBER}"
-        CONTAINER = "aahaas-frontend-v2"
+        CONTAINER = "aahaas-frontend"
     }
 
     stages {
