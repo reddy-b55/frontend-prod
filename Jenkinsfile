@@ -29,7 +29,7 @@ pipeline {
                       -Dsonar.projectKey=aahaas-frontend \
                       -Dsonar.projectName=aahaas-frontend \
                       -Dsonar.sources=. \
-                      -Dsonar.exclusions=node_modules/**,.next/**,dist/**,build/**
+                      -Dsonar.exclusions=node_modules/**,.next/**,build/**,dist/**
                     """
                 }
             }
@@ -45,10 +45,10 @@ pipeline {
 
         stage('Login to ECR') {
             steps {
-                withCredentials([[
-                    \$class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-ecr-creds'
-                ]]) {
+                withCredentials([
+                    [$class: 'AmazonWebServicesCredentialsBinding',
+                     credentialsId: 'aws-ecr-creds']
+                ]) {
                     sh """
                     aws ecr get-login-password --region ${AWS_REGION} | \
                     docker login --username AWS --password-stdin \
@@ -91,7 +91,7 @@ pipeline {
 
     post {
         success {
-            echo "✅ Build, Scan & Deploy successful"
+            echo "✅ SonarQube + Build + Deploy completed successfully"
         }
         failure {
             echo "❌ Pipeline failed"
