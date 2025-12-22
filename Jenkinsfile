@@ -11,7 +11,7 @@ pipeline {
 
     stages {
 
-        stage('SCM') {
+        stage('Checkout SCM') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/reddy-b55/frontend-prod.git'
@@ -20,42 +20,42 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh """
+                sh '''
                 docker build -t ${ECR_REPO}:${IMAGE_TAG} .
-                """
+                '''
             }
         }
 
         stage('Login to ECR') {
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-ecr-creds'
-                ]]) {
-                    sh """
+                withCredentials([
+                    [$class: 'AmazonWebServicesCredentialsBinding',
+                     credentialsId: 'aws-ecr-creds']
+                ]) {
+                    sh '''
                     aws ecr get-login-password --region ${AWS_REGION} | \
                     docker login --username AWS --password-stdin \
                     ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-                    """
+                    '''
                 }
             }
         }
 
-        stage('Push Image to ECR') {
+        stage('Tag & Push Image to ECR') {
             steps {
-                sh """
+                sh '''
                 docker tag ${ECR_REPO}:${IMAGE_TAG} \
                 ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
 
                 docker push \
                 ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                """
+                '''
             }
         }
 
         stage('Deploy on Same EC2') {
             steps {
-                sh """
+                sh '''
                 docker stop ${CONTAINER} || true
                 docker rm ${CONTAINER} || true
 
@@ -67,7 +67,7 @@ pipeline {
                   -p 3000:3000 \
                   --restart always \
                   ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                """
+                '''
             }
         }
     }
