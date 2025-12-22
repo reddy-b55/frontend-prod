@@ -18,28 +18,39 @@ pipeline {
             }
         }
 
-      stage('SonarQube Analysis') {
-    steps {
-        withSonarQubeEnv('SonarQube') {
-            script {
-                def scannerHome = tool 'SonarScanner'
-                sh """
-                ${scannerHome}/bin/sonar-scanner \
-                  -Dsonar.projectKey=aahaas-frontend \
-                  -Dsonar.projectName=aahaas-frontend \
-                  -Dsonar.sources=. \
-                  -Dsonar.exclusions=node_modules/**,.next/**,dist/**
-                """
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                    export PATH=/usr/bin:$PATH
+                    node -v || true
+
+                    sonar-scanner \
+                      -Dsonar.projectKey=aahaas-frontend \
+                      -Dsonar.projectName=aahaas-frontend \
+                      -Dsonar.sources=. \
+                      -Dsonar.language=js \
+                      -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/dist/**,**/build/**
+                    '''
+                }
             }
         }
-    }
-}
 
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
                 sh '''
-                docker build -t ${ECR_REPO}:${IMAGE_TAG} .
+                docker build \
+                  --memory=4g \
+                  --memory-swap=6g \
+                  -t ${ECR_REPO}:${IMAGE_TAG} .
                 '''
             }
         }
@@ -92,10 +103,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ SonarQube + Build + Deploy completed successfully"
+            echo "✅ SonarQube + Docker + ECR + EC2 Deployment SUCCESS"
         }
         failure {
-            echo "❌ Pipeline failed"
+            echo "❌ Pipeline FAILED – check logs"
         }
     }
 }
