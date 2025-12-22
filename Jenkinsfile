@@ -9,8 +9,6 @@ pipeline {
         ECR_REPO  = "aahaas-frontend-v2"
         IMAGE_TAG = "${BUILD_NUMBER}"
         CONTAINER = "aahaas-frontend-v2"
-
-        APP_PORT = "3000"
     }
 
     stages {
