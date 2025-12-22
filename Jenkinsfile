@@ -4,9 +4,13 @@ pipeline {
     environment {
         AWS_REGION = "us-east-1"
         ACCOUNT_ID = "424858915041"
-        ECR_REPO   = "aahaas-frontend-v2"
-        IMAGE_TAG  = "${BUILD_NUMBER}"
-        CONTAINER  = "aahaas-frontend-v2"
+
+        // Change only these for new projects
+        ECR_REPO  = "aahaas-frontend-v2"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+        CONTAINER = "aahaas-frontend-v2"
+
+        APP_PORT = "3000"
     }
 
     stages {
@@ -26,11 +30,35 @@ pipeline {
             }
         }
 
+        stage('Create ECR Repository') {
+            steps {
+                withCredentials([
+                    [
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: 'aws-ecr-creds'
+                    ]
+                ]) {
+                    sh '''
+                    set -e
+
+                    aws ecr describe-repositories \
+                      --region ${AWS_REGION} \
+                      --repository-names ${ECR_REPO} \
+                    || aws ecr create-repository \
+                      --region ${AWS_REGION} \
+                      --repository-name ${ECR_REPO}
+                    '''
+                }
+            }
+        }
+
         stage('Login to ECR') {
             steps {
                 withCredentials([
-                    [$class: 'AmazonWebServicesCredentialsBinding',
-                     credentialsId: 'aws-ecr-creds']
+                    [
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: 'aws-ecr-creds'
+                    ]
                 ]) {
                     sh '''
                     aws ecr get-login-password --region ${AWS_REGION} | \
@@ -64,11 +92,20 @@ pipeline {
 
                 docker run -d \
                   --name ${CONTAINER} \
-                  -p 3000:3000 \
+                  -p ${APP_PORT}:${APP_PORT} \
                   --restart always \
                   ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
                 '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Deployment successful: ${ECR_REPO}:${IMAGE_TAG}"
+        }
+        failure {
+            echo "❌ Pipeline failed"
         }
     }
 }
