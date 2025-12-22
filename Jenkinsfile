@@ -6,44 +6,36 @@ pipeline {
         ACCOUNT_ID = "424858915041"
         ECR_REPO   = "aahaas-frontend"
         IMAGE_TAG  = "${BUILD_NUMBER}"
-        CONTAINER  = "aahaas-frontend"
     }
 
     stages {
 
-        stage('Checkout SCM') {
+        stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/reddy-b55/frontend-prod.git'
+                checkout scm
             }
         }
 
-       stage('SonarQube Analysis') {
-    tools {
-        nodejs 'node18'
-    }
-    steps {
-        withSonarQubeEnv('SonarQube') {
-            script {
-                def scannerHome = tool 'SonarScanner'
-                sh """
-                node -v
-                ${scannerHome}/bin/sonar-scanner \
-                  -Dsonar.projectKey=aahaas-frontend \
-                  -Dsonar.projectName=aahaas-frontend \
-                  -Dsonar.sources=. \
-                  -Dsonar.language=js \
-                  -Dsonar.exclusions=**/node_modules/**,**/.next/**,**/dist/**,**/build/**
-                """
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    script {
+                        def scannerHome = tool 'SonarScanner'
+                        sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                          -Dsonar.projectKey=aahaas-frontend \
+                          -Dsonar.projectName=aahaas-frontend \
+                          -Dsonar.sources=. \
+                          -Dsonar.exclusions=**/node_modules/**,**/.next/**
+                        """
+                    }
+                }
             }
         }
-    }
-}
-
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 2, unit: 'MINUTES') {
+                timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
@@ -51,67 +43,41 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh '''
-                docker build \
-                  --memory=4g \
-                  --memory-swap=6g \
-                  -t ${ECR_REPO}:${IMAGE_TAG} .
-                '''
+                sh """
+                docker build -t ${ECR_REPO}:${IMAGE_TAG} .
+                """
             }
         }
 
         stage('Login to ECR') {
             steps {
-                withCredentials([
-                    [$class: 'AmazonWebServicesCredentialsBinding',
-                     credentialsId: 'aws-ecr-creds']
-                ]) {
-                    sh '''
-                    aws ecr get-login-password --region ${AWS_REGION} | \
-                    docker login --username AWS --password-stdin \
-                    ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-                    '''
-                }
+                sh """
+                aws ecr get-login-password --region ${AWS_REGION} | \
+                docker login --username AWS --password-stdin \
+                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                """
             }
         }
 
-        stage('Push Image to ECR') {
+        stage('Push Image') {
             steps {
-                sh '''
+                sh """
                 docker tag ${ECR_REPO}:${IMAGE_TAG} \
                 ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
 
                 docker push \
                 ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                '''
-            }
-        }
-
-        stage('Deploy on EC2') {
-            steps {
-                sh '''
-                docker stop ${CONTAINER} || true
-                docker rm ${CONTAINER} || true
-
-                docker pull \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-
-                docker run -d \
-                  --name ${CONTAINER} \
-                  -p 3000:3000 \
-                  --restart always \
-                  ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                '''
+                """
             }
         }
     }
 
     post {
-        success {
-            echo "✅ SonarQube + Docker + ECR + EC2 Deployment SUCCESS"
-        }
         failure {
-            echo "❌ Pipeline FAILED – check logs"
+            echo "❌ Pipeline FAILED"
+        }
+        success {
+            echo "✅ Pipeline SUCCESS"
         }
     }
 }
