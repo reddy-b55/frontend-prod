@@ -9,8 +9,6 @@ pipeline {
         ECR_REPO  = "aahaas-frontend"
         CONTAINER = "aahaas-frontend"
         IMAGE_TAG = "${BUILD_NUMBER}"
-
-        APP_PORT  = "3000"
     }
 
     stages {
@@ -68,7 +66,7 @@ pipeline {
 
                 docker run -d \
                   --name ${CONTAINER} \
-                  -p ${APP_PORT}:3000 \
+                  -p 3000:3000 \
                   --restart always \
                   ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
                 '''
