@@ -18,6 +18,23 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            environment {
+                scannerHome = tool 'sonar-scanner'
+            }
+            steps {
+                withSonarQubeEnv('sonarqube-server') {
+                    sh """
+                    ${scannerHome}/bin/sonar-scanner \
+                      -Dsonar.projectKey=aahaas-frontend \
+                      -Dsonar.projectName=aahaas-frontend \
+                      -Dsonar.sources=. \
+                      -Dsonar.exclusions=node_modules/**,.next/**,dist/**,build/**
+                    """
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh """
@@ -29,7 +46,7 @@ pipeline {
         stage('Login to ECR') {
             steps {
                 withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
+                    \$class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-ecr-creds'
                 ]]) {
                     sh """
@@ -69,6 +86,15 @@ pipeline {
                   ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
                 """
             }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Build, Scan & Deploy successful"
+        }
+        failure {
+            echo "❌ Pipeline failed"
         }
     }
 }
