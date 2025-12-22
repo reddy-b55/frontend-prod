@@ -7,6 +7,8 @@ pipeline {
         ECR_REPO   = "aahaas-frontend"
         IMAGE_TAG  = "${BUILD_NUMBER}"
         CONTAINER  = "aahaas-frontend"
+        SONAR_SERVER_URL = 'http://34.203.30.140:9000/'
+        SONAR_LOGIN = 'sqp_60b7546d57818620bb77d7a9695180f7256ab44c'
     }
 
     stages {
@@ -18,23 +20,27 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        
+
+          stage('Code Analysis') {
             environment {
-                scannerHome = tool 'sonar-scanner'
+                scannerHome = tool 'sonarqube'
             }
             steps {
-                withSonarQubeEnv('sonarqube-server') {
-                    sh """
-                    ${scannerHome}/bin/sonar-scanner \
-                      -Dsonar.projectKey=aahaas-frontend \
-                      -Dsonar.projectName=aahaas-frontend \
-                      -Dsonar.sources=. \
-                      -Dsonar.exclusions=node_modules/**,.next/**,build/**,dist/**
-                    """
+                script {
+                    dir("${WORKSPACE}/${RESTAPI}") {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=aahaas-frontend \
+                            -Dsonar.projectName=aahaas-frontend \
+                            -Dsonar.sources=. \
+                            -Dsonar.java.binaries=target/classes \
+                            -Dsonar.host.url=${SONAR_SERVER_URL} \
+                            -Dsonar.login=${SONAR_LOGIN}"
+                    }
                 }
             }
         }
-
+        
         stage('Build Docker Image') {
             steps {
                 sh """
