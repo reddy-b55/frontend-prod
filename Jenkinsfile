@@ -7,8 +7,10 @@ pipeline {
 
         // Change only these for new projects
         ECR_REPO  = "aahaas-frontend"
-        IMAGE_TAG = "${BUILD_NUMBER}"
         CONTAINER = "aahaas-frontend"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+
+        APP_PORT  = "3000"
     }
 
     stages {
@@ -28,35 +30,11 @@ pipeline {
             }
         }
 
-        stage('Create ECR Repository') {
-            steps {
-                withCredentials([
-                    [
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        credentialsId: 'aws-ecr-creds'
-                    ]
-                ]) {
-                    sh '''
-                    set -e
-
-                    aws ecr describe-repositories \
-                      --region ${AWS_REGION} \
-                      --repository-names ${ECR_REPO} \
-                    || aws ecr create-repository \
-                      --region ${AWS_REGION} \
-                      --repository-name ${ECR_REPO}
-                    '''
-                }
-            }
-        }
-
         stage('Login to ECR') {
             steps {
                 withCredentials([
-                    [
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        credentialsId: 'aws-ecr-creds'
-                    ]
+                    [$class: 'AmazonWebServicesCredentialsBinding',
+                     credentialsId: 'aws-ecr-creds']
                 ]) {
                     sh '''
                     aws ecr get-login-password --region ${AWS_REGION} | \
@@ -90,7 +68,7 @@ pipeline {
 
                 docker run -d \
                   --name ${CONTAINER} \
-                  -p ${APP_PORT}:${APP_PORT} \
+                  -p ${APP_PORT}:3000 \
                   --restart always \
                   ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
                 '''
