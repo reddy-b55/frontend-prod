@@ -1,7 +1,10 @@
-# Build stage
-FROM node:18-alpine AS builder
+# ---------- Builder Stage ----------
+FROM node:18 AS builder
 
 WORKDIR /app
+
+# Increase Node memory to avoid SIGKILL
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
@@ -9,12 +12,20 @@ RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
 
-# Runtime stage
-FROM node:18-alpine
+
+# ---------- Production Stage ----------
+FROM node:18-slim
 
 WORKDIR /app
 
-COPY --from=builder /app .
+ENV NODE_ENV=production
+
+# Copy only required files
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/next.config.js ./next.config.js
 
 EXPOSE 3000
 
