@@ -9,7 +9,6 @@ pipeline {
         CONTAINER  = "aahaas-frontend"
         APP_PORT   = "3000"
     }
-
     stages {
 
         stage('Checkout') {
