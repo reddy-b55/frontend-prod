@@ -6,14 +6,27 @@ pipeline {
         ACCOUNT_ID = "424858915041"
         ECR_REPO   = "aahaas-frontend"
         IMAGE_TAG  = "${BUILD_NUMBER}"
+        ECR_URI    = "${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}"
         CONTAINER  = "aahaas-frontend"
         APP_PORT   = "3000"
     }
+
     stages {
 
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Terraform Validate') {
+            steps {
+                dir('terraform') {
+                    sh '''
+                        terraform init -backend=false
+                        terraform validate
+                    '''
+                }
             }
         }
 
@@ -36,48 +49,35 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh """
+                sh '''
                 docker build -t ${ECR_REPO}:${IMAGE_TAG} .
-                """
+                '''
             }
         }
 
-        stage('Login to ECR') {
+        stage('Login to Amazon ECR') {
             steps {
-                sh """
+                sh '''
                 aws ecr get-login-password --region ${AWS_REGION} | \
-                docker login --username AWS --password-stdin \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-                """
+                docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                '''
             }
         }
 
-        stage('Push Image') {
+        stage('Push Image to ECR') {
             steps {
-                sh """
-                docker tag ${ECR_REPO}:${IMAGE_TAG} \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-
-                docker push \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                """
+                sh '''
+                docker tag ${ECR_REPO}:${IMAGE_TAG} ${ECR_URI}:${IMAGE_TAG}
+                docker push ${ECR_URI}:${IMAGE_TAG}
+                '''
             }
         }
 
-        /* ✅ NEW STAGE 1 */
-        stage('Pull Image from ECR') {
-            steps {
-                sh """
-                docker pull \
-                ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                """
-            }
-        }
-
-        /* ✅ NEW STAGE 2 */
         stage('Deploy on EC2') {
             steps {
-                sh """
+                sh '''
+                docker pull ${ECR_URI}:${IMAGE_TAG}
+
                 docker stop ${CONTAINER} || true
                 docker rm ${CONTAINER} || true
 
@@ -85,18 +85,26 @@ pipeline {
                   --name ${CONTAINER} \
                   -p ${APP_PORT}:${APP_PORT} \
                   --restart always \
-                  ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}
-                """
+                  ${ECR_URI}:${IMAGE_TAG}
+                '''
+            }
+        }
+
+        stage('Docker Cleanup') {
+            steps {
+                sh '''
+                docker image prune -f
+                '''
             }
         }
     }
 
     post {
         success {
-            echo "✅ SonarQube + Build + Push + Deploy completed successfully"
+            echo "✅ CI/CD Pipeline completed successfully"
         }
         failure {
-            echo "❌ Pipeline FAILED"
+            echo "❌ CI/CD Pipeline failed"
         }
     }
 }
