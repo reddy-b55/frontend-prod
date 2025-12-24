@@ -26,3 +26,12 @@ yarn-error.log*
 # .env
 # .env.production-live
 # .env.production-testing
+
+# =========================
+# Terraform
+# =========================
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/terraform.tfvars
+
